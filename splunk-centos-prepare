@@ -1,0 +1,38 @@
+#!/bin/bash
+#===============================================================================================
+#   System Required:  CentOS 6,7
+#   Description:  cli based installation script for Splunk
+#   Author: Jay Maree <pm@me>
+#   FindMe:  github.com/jaymaree
+#===============================================================================================
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root :(" 
+    echo "Please try running this command again as root user"
+    exit 1
+fi
+
+function printMessage() {
+    echo -e "\e[1;37m# $1\033[0m"
+}
+
+function yum_update {
+    yum update > /dev/null
+}
+
+function select_splunk {
+
+}
+
+clear
+echo "---------------------------------------------------------------"
+echo -e "# Welcome to \033[1mSplunk+Addon\033[0m Installer for Centos 6,7!"
+echo "---------------------------------------------------------------"
+printMessage "Updating the base system right now..."
+yum_update
+printMessage "Installing Splunk right now"
+select_splunk
+echo "---------------------------------------------------------------"
+echo "* Splunk WebAccess: https://localhost:8000"
+echo "---------------------------------------------------------------"
+echo -e "\033[37m  Splunk by Jay Maree(pm@me)\033[0m"
+echo "---------------------------------------------------------------"
